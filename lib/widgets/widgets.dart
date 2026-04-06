@@ -19,7 +19,7 @@ class StatCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(20),
+      padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
         color: AppColors.bgCard,
         borderRadius: BorderRadius.circular(16),
@@ -27,18 +27,30 @@ class StatCard extends StatelessWidget {
       ),
       child: Row(children: [
         Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(color: iconBg, borderRadius: BorderRadius.circular(12)),
+          width: 40,
+          height: 40,
+          decoration: BoxDecoration(color: iconBg, borderRadius: BorderRadius.circular(10)),
           alignment: Alignment.center,
-          child: Text(emoji, style: const TextStyle(fontSize: 22)),
+          child: Text(emoji, style: const TextStyle(fontSize: 18)),
         ),
-        const SizedBox(width: 16),
-        Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Text(value, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w800, color: AppColors.textPrimary)),
-          const SizedBox(height: 3),
-          Text(label, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary)),
-        ]),
+        const SizedBox(width: 10),
+        Expanded(
+          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+            Text(
+              value,
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.textPrimary),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+            const SizedBox(height: 2),
+            Text(
+              label,
+              style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+              overflow: TextOverflow.ellipsis,
+              maxLines: 1,
+            ),
+          ]),
+        ),
       ]),
     );
   }
