@@ -33,26 +33,40 @@ class OwnerDashboard extends StatelessWidget {
       };
       return Scaffold(
         backgroundColor: AppColors.bgPrimary,
-        appBar: AppBar(
-          backgroundColor: AppColors.bgSecondary,
-          title: Text(titles[state.ownerPage] ?? 'Dashboard',
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
-          actions: [
-            Container(
-              margin: const EdgeInsets.only(right: 16),
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(
-                color: AppColors.success.withOpacity(0.15),
-                borderRadius: BorderRadius.circular(20),
-              ),
-              child: Row(children: [
-                Container(width: 8, height: 8, decoration: const BoxDecoration(color: AppColors.success, shape: BoxShape.circle)),
-                const SizedBox(width: 6),
-                const Text('Live', style: TextStyle(color: AppColors.success, fontSize: 12, fontWeight: FontWeight.w600)),
-              ]),
-            ),
-          ],
+     appBar: PreferredSize(
+  preferredSize: const Size.fromHeight(56),
+  child: ClipRect(
+    child: Container(
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.05),
+        border: Border(
+          bottom: BorderSide(color: Colors.white.withOpacity(0.1), width: 0.5),
         ),
+      ),
+      child: AppBar(
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        title: Text(titles[state.ownerPage] ?? 'Dashboard',
+          style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700)),
+        actions: [
+          Container(
+            margin: const EdgeInsets.only(right: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+            decoration: BoxDecoration(
+              color: AppColors.success.withOpacity(0.15),
+              borderRadius: BorderRadius.circular(20),
+            ),
+            child: Row(children: [
+              Container(width: 8, height: 8, decoration: const BoxDecoration(color: AppColors.success, shape: BoxShape.circle)),
+              const SizedBox(width: 6),
+              const Text('Live', style: TextStyle(color: AppColors.success, fontSize: 12, fontWeight: FontWeight.w600)),
+            ]),
+          ),
+        ],
+      ),
+    ),
+  ),
+),
         drawer: _OwnerDrawer(),
         body: pages[state.ownerPage] ?? const DashboardPage(),
       );

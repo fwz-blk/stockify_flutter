@@ -33,8 +33,8 @@ class AppState extends ChangeNotifier {
       if (userRole == 'owner') {
         await loadShop(uid);
       } else if (userRole == 'customer') {
-        view = AppView.customerDashboard;
-      }
+  view = AppView.landing;
+}
     }
     isCheckingSession = false;
     notifyListeners();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 import 'package:provider/provider.dart';
 import 'theme.dart';
@@ -13,6 +14,10 @@ import 'screens/order_success_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
+    statusBarColor: Colors.transparent,
+    statusBarIconBrightness: Brightness.light,
+  ));
   await Supabase.initialize(
     url: 'https://lztofouholixewypgeii.supabase.co',
     anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6dG9mb3Vob2xpeGV3eXBnZWlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0MjcxNTIsImV4cCI6MjA4ODAwMzE1Mn0.Ur8Lp1ppAPDCfvhrPRR8tdo0BsBUHXvZbvDE16Y3xoA',

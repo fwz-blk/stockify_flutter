@@ -39,12 +39,13 @@ class AppTheme {
           bodyColor: AppColors.textPrimary,
           displayColor: AppColors.textPrimary,
         ),
-        appBarTheme: const AppBarTheme(
-          backgroundColor: AppColors.bgSecondary,
-          foregroundColor: AppColors.textPrimary,
-          elevation: 0,
-          surfaceTintColor: Colors.transparent,
-        ),
+      appBarTheme: AppBarTheme(
+  backgroundColor: Colors.white.withOpacity(0.05),
+  foregroundColor: AppColors.textPrimary,
+  elevation: 0,
+  surfaceTintColor: Colors.transparent,
+  shadowColor: Colors.transparent,
+),
    cardTheme: CardThemeData(
   color: AppColors.bgCard,
   elevation: 0,
