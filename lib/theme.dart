@@ -32,28 +32,27 @@ class AppTheme {
           primary: AppColors.accent,
           secondary: AppColors.accent2,
           surface: AppColors.bgCard,
-          background: AppColors.bgPrimary,
           error: AppColors.danger,
         ),
         textTheme: GoogleFonts.interTextTheme(ThemeData.dark().textTheme).apply(
           bodyColor: AppColors.textPrimary,
           displayColor: AppColors.textPrimary,
         ),
-      appBarTheme: AppBarTheme(
-  backgroundColor: Colors.white.withOpacity(0.05),
-  foregroundColor: AppColors.textPrimary,
-  elevation: 0,
-  surfaceTintColor: Colors.transparent,
-  shadowColor: Colors.transparent,
-),
-   cardTheme: CardThemeData(
-  color: AppColors.bgCard,
-  elevation: 0,
-  shape: RoundedRectangleBorder(
-    borderRadius: BorderRadius.circular(16),
-    side: const BorderSide(color: AppColors.border),
-  ),
-), // CardThemeData
+        appBarTheme: AppBarTheme(
+          backgroundColor: Colors.white.withOpacity(0.05),
+          foregroundColor: AppColors.textPrimary,
+          elevation: 0,
+          surfaceTintColor: Colors.transparent,
+          shadowColor: Colors.transparent,
+        ),
+        cardTheme: CardThemeData(
+          color: AppColors.bgCard,
+          elevation: 0,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+            side: const BorderSide(color: AppColors.border),
+          ),
+        ), // CardThemeData
         inputDecorationTheme: InputDecorationTheme(
           filled: true,
           fillColor: AppColors.bgInput,
@@ -76,16 +75,19 @@ class AppTheme {
           style: ElevatedButton.styleFrom(
             backgroundColor: AppColors.accent,
             foregroundColor: Colors.white,
-            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-            textStyle: GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 14),
+            textStyle:
+                GoogleFonts.inter(fontWeight: FontWeight.w600, fontSize: 14),
           ),
         ),
         dividerTheme: const DividerThemeData(color: AppColors.border),
         snackBarTheme: SnackBarThemeData(
           backgroundColor: AppColors.bgCard,
           contentTextStyle: const TextStyle(color: AppColors.textPrimary),
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           behavior: SnackBarBehavior.floating,
         ),
       );

@@ -20,7 +20,8 @@ void main() async {
   ));
   await Supabase.initialize(
     url: 'https://lztofouholixewypgeii.supabase.co',
-    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6dG9mb3Vob2xpeGV3eXBnZWlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0MjcxNTIsImV4cCI6MjA4ODAwMzE1Mn0.Ur8Lp1ppAPDCfvhrPRR8tdo0BsBUHXvZbvDE16Y3xoA',
+    anonKey:
+        'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imx6dG9mb3Vob2xpeGV3eXBnZWlpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI0MjcxNTIsImV4cCI6MjA4ODAwMzE1Mn0.Ur8Lp1ppAPDCfvhrPRR8tdo0BsBUHXvZbvDE16Y3xoA',
   );
   runApp(
     ChangeNotifierProvider(
@@ -53,11 +54,14 @@ class _AppRouter extends StatelessWidget {
       if (state.isCheckingSession) {
         return const Scaffold(
           backgroundColor: Color(0xFF0A0A0F),
-          body: Center(child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-            Text('📦', style: TextStyle(fontSize: 48)),
-            SizedBox(height: 20),
-            CircularProgressIndicator(color: Color(0xFF6C63FF)),
-          ])),
+          body: Center(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                Text('📦', style: TextStyle(fontSize: 48)),
+                SizedBox(height: 20),
+                CircularProgressIndicator(color: Color(0xFF6C63FF)),
+              ])),
         );
       }
 

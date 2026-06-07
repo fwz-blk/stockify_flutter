@@ -36,17 +36,30 @@ class LandingScreen extends StatelessWidget {
                         colors: [AppColors.accent, AppColors.accent2],
                       ),
                       borderRadius: BorderRadius.circular(20),
-                      boxShadow: [BoxShadow(color: AppColors.accentGlow, blurRadius: 30, spreadRadius: 2)],
+                      boxShadow: const [
+                        BoxShadow(
+                            color: AppColors.accentGlow,
+                            blurRadius: 30,
+                            spreadRadius: 2)
+                      ],
                     ),
-                    child: const Center(child: Text('📦', style: TextStyle(fontSize: 32))),
+                    child: const Center(
+                        child: Text('📦', style: TextStyle(fontSize: 32))),
                   ),
                   const SizedBox(height: 20),
                   RichText(
                     text: const TextSpan(
-                      style: TextStyle(fontSize: 44, fontWeight: FontWeight.w900, letterSpacing: -2),
+                      style: TextStyle(
+                          fontSize: 44,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -2),
                       children: [
-                        TextSpan(text: 'Stock', style: TextStyle(color: AppColors.textPrimary)),
-                        TextSpan(text: 'ify', style: TextStyle(color: AppColors.accent)),
+                        TextSpan(
+                            text: 'Stock',
+                            style: TextStyle(color: AppColors.textPrimary)),
+                        TextSpan(
+                            text: 'ify',
+                            style: TextStyle(color: AppColors.accent)),
                       ],
                     ),
                   ),
@@ -54,7 +67,10 @@ class LandingScreen extends StatelessWidget {
                   const Text(
                     'Smart inventory & ordering platform\nfor Kirana shops.',
                     textAlign: TextAlign.center,
-                    style: TextStyle(color: AppColors.textSecondary, fontSize: 16, height: 1.6),
+                    style: TextStyle(
+                        color: AppColors.textSecondary,
+                        fontSize: 16,
+                        height: 1.6),
                   ),
                   const SizedBox(height: 52),
 
@@ -96,7 +112,11 @@ class _RoleCard extends StatefulWidget {
   final String desc;
   final VoidCallback onTap;
 
-  const _RoleCard({required this.emoji, required this.title, required this.desc, required this.onTap});
+  const _RoleCard(
+      {required this.emoji,
+      required this.title,
+      required this.desc,
+      required this.onTap});
 
   @override
   State<_RoleCard> createState() => _RoleCardState();
@@ -118,15 +138,24 @@ class _RoleCardState extends State<_RoleCard> {
         decoration: BoxDecoration(
           color: AppColors.bgCard,
           borderRadius: BorderRadius.circular(20),
-          border: Border.all(color: _hover ? AppColors.accent : AppColors.border, width: _hover ? 1.5 : 1),
-          boxShadow: _hover ? [BoxShadow(color: AppColors.accentGlow, blurRadius: 20)] : [],
+          border: Border.all(
+              color: _hover ? AppColors.accent : AppColors.border,
+              width: _hover ? 1.5 : 1),
+          boxShadow: _hover
+              ? [const BoxShadow(color: AppColors.accentGlow, blurRadius: 20)]
+              : [],
         ),
         child: Column(children: [
           Text(widget.emoji, style: const TextStyle(fontSize: 40)),
           const SizedBox(height: 14),
-          Text(widget.title, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
+          Text(widget.title,
+              style:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w700)),
           const SizedBox(height: 6),
-          Text(widget.desc, textAlign: TextAlign.center, style: const TextStyle(fontSize: 12, color: AppColors.textSecondary, height: 1.5)),
+          Text(widget.desc,
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                  fontSize: 12, color: AppColors.textSecondary, height: 1.5)),
         ]),
       ),
     );

@@ -17,7 +17,9 @@ class _LowStockPageState extends State<LowStockPage> {
 
   @override
   void dispose() {
-    for (final c in _controllers.values) c.dispose();
+    for (final c in _controllers.values) {
+      c.dispose();
+    }
     super.dispose();
   }
 
@@ -28,7 +30,9 @@ class _LowStockPageState extends State<LowStockPage> {
   Future<void> _restock(BuildContext context, Product p) async {
     final amt = int.tryParse(_ctrl(p.id).text) ?? 0;
     if (amt <= 0) return;
-    await context.read<AppState>().updateProduct(p.id, {'stock': p.stock + amt});
+    await context
+        .read<AppState>()
+        .updateProduct(p.id, {'stock': p.stock + amt});
     _ctrl(p.id).clear();
     if (context.mounted) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -42,13 +46,17 @@ class _LowStockPageState extends State<LowStockPage> {
     return Consumer<AppState>(builder: (context, state, _) {
       final items = state.lowStockProducts;
       if (items.isEmpty) {
-        return const EmptyState(emoji: '✅', title: 'All Good!', subtitle: 'No products below the stock threshold.');
+        return const EmptyState(
+            emoji: '✅',
+            title: 'All Good!',
+            subtitle: 'No products below the stock threshold.');
       }
       return Column(children: [
         Padding(
           padding: const EdgeInsets.fromLTRB(16, 16, 16, 8),
           child: Row(children: [
-            const Text('Low Stock Items', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
+            const Text('Low Stock Items',
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 16)),
             const Spacer(),
             StatusBadge('${items.length} items', type: BadgeType.warning),
           ]),
@@ -65,24 +73,41 @@ class _LowStockPageState extends State<LowStockPage> {
                 decoration: BoxDecoration(
                   color: AppColors.bgCard,
                   borderRadius: BorderRadius.circular(14),
-                  border: Border.all(color: p.isOutOfStock ? AppColors.danger.withOpacity(0.4) : AppColors.warning.withOpacity(0.3)),
+                  border: Border.all(
+                      color: p.isOutOfStock
+                          ? AppColors.danger.withOpacity(0.4)
+                          : AppColors.warning.withOpacity(0.3)),
                 ),
                 child: Column(children: [
                   Row(children: [
-                    Expanded(child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-                      Text(p.name, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
-                      const SizedBox(height: 6),
-                      Row(children: [
-                        StatusBadge(p.category, type: BadgeType.info),
-                        const SizedBox(width: 8),
-                        StatusBadge(
-                          p.isOutOfStock ? 'Out of Stock' : '${p.stock} ${p.unit} left',
-                          type: p.isOutOfStock ? BadgeType.danger : BadgeType.warning,
-                        ),
-                      ]),
-                    ])),
-                    Text('${p.stock} ${p.unit}', style: TextStyle(fontWeight: FontWeight.w800, fontSize: 18,
-                      color: p.isOutOfStock ? AppColors.danger : AppColors.warning)),
+                    Expanded(
+                        child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                          Text(p.name,
+                              style: const TextStyle(
+                                  fontWeight: FontWeight.w700, fontSize: 15)),
+                          const SizedBox(height: 6),
+                          Row(children: [
+                            StatusBadge(p.category, type: BadgeType.info),
+                            const SizedBox(width: 8),
+                            StatusBadge(
+                              p.isOutOfStock
+                                  ? 'Out of Stock'
+                                  : '${p.stock} ${p.unit} left',
+                              type: p.isOutOfStock
+                                  ? BadgeType.danger
+                                  : BadgeType.warning,
+                            ),
+                          ]),
+                        ])),
+                    Text('${p.stock} ${p.unit}',
+                        style: TextStyle(
+                            fontWeight: FontWeight.w800,
+                            fontSize: 18,
+                            color: p.isOutOfStock
+                                ? AppColors.danger
+                                : AppColors.warning)),
                   ]),
                   const SizedBox(height: 14),
                   Row(children: [
@@ -90,13 +115,22 @@ class _LowStockPageState extends State<LowStockPage> {
                       child: TextField(
                         controller: _ctrl(p.id),
                         keyboardType: TextInputType.number,
-                        style: const TextStyle(color: AppColors.textPrimary, fontSize: 14),
+                        style: const TextStyle(
+                            color: AppColors.textPrimary, fontSize: 14),
                         decoration: InputDecoration(
                           hintText: 'Add qty',
-                          filled: true, fillColor: AppColors.bgInput,
-                          contentPadding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
-                          border: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: const BorderSide(color: AppColors.border)),
-                          enabledBorder: OutlineInputBorder(borderRadius: BorderRadius.circular(8), borderSide: const BorderSide(color: AppColors.border)),
+                          filled: true,
+                          fillColor: AppColors.bgInput,
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 12, vertical: 10),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  const BorderSide(color: AppColors.border)),
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide:
+                                  const BorderSide(color: AppColors.border)),
                         ),
                       ),
                     ),
@@ -104,9 +138,16 @@ class _LowStockPageState extends State<LowStockPage> {
                     GestureDetector(
                       onTap: () => _restock(context, p),
                       child: Container(
-                        padding: const EdgeInsets.symmetric(horizontal: 18, vertical: 11),
-                        decoration: BoxDecoration(color: AppColors.success, borderRadius: BorderRadius.circular(8)),
-                        child: const Text('+ Add', style: TextStyle(color: Color(0xFF0A0A0F), fontWeight: FontWeight.w700, fontSize: 13)),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18, vertical: 11),
+                        decoration: BoxDecoration(
+                            color: AppColors.success,
+                            borderRadius: BorderRadius.circular(8)),
+                        child: const Text('+ Add',
+                            style: TextStyle(
+                                color: Color(0xFF0A0A0F),
+                                fontWeight: FontWeight.w700,
+                                fontSize: 13)),
                       ),
                     ),
                   ]),
