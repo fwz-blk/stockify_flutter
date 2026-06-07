@@ -29,23 +29,29 @@ class StatCard extends StatelessWidget {
         Container(
           width: 40,
           height: 40,
-          decoration: BoxDecoration(color: iconBg, borderRadius: BorderRadius.circular(10)),
+          decoration: BoxDecoration(
+              color: iconBg, borderRadius: BorderRadius.circular(10)),
           alignment: Alignment.center,
           child: Text(emoji, style: const TextStyle(fontSize: 18)),
         ),
         const SizedBox(width: 10),
         Expanded(
-          child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          child:
+              Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
               value,
-              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w800, color: AppColors.textPrimary),
+              style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.w800,
+                  color: AppColors.textPrimary),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
             const SizedBox(height: 2),
             Text(
               label,
-              style: const TextStyle(fontSize: 11, color: AppColors.textSecondary),
+              style:
+                  const TextStyle(fontSize: 11, color: AppColors.textSecondary),
               overflow: TextOverflow.ellipsis,
               maxLines: 1,
             ),
@@ -79,7 +85,9 @@ class StatusBadge extends StatelessWidget {
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: fg.withOpacity(0.4)),
       ),
-      child: Text(text, style: TextStyle(color: fg, fontSize: 12, fontWeight: FontWeight.w600)),
+      child: Text(text,
+          style:
+              TextStyle(color: fg, fontSize: 12, fontWeight: FontWeight.w600)),
     );
   }
 }
@@ -140,14 +148,21 @@ class PrimaryButton extends StatelessWidget {
         minimumSize: fullWidth ? const Size(double.infinity, 48) : null,
       ),
       child: loading
-          ? const SizedBox(width: 20, height: 20, child: CircularProgressIndicator(color: Colors.white, strokeWidth: 2))
+          ? const SizedBox(
+              width: 20,
+              height: 20,
+              child: CircularProgressIndicator(
+                  color: Colors.white, strokeWidth: 2))
           : Row(
               mainAxisSize: fullWidth ? MainAxisSize.max : MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (emoji != null) Text(emoji!, style: const TextStyle(fontSize: 16)),
+                if (emoji != null)
+                  Text(emoji!, style: const TextStyle(fontSize: 16)),
                 if (emoji != null) const SizedBox(width: 8),
-                Text(label, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15)),
+                Text(label,
+                    style: const TextStyle(
+                        fontWeight: FontWeight.w700, fontSize: 15)),
               ],
             ),
     );
@@ -179,7 +194,11 @@ class AppTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Text(label, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w600, color: AppColors.textSecondary)),
+      Text(label,
+          style: const TextStyle(
+              fontSize: 13,
+              fontWeight: FontWeight.w600,
+              color: AppColors.textSecondary)),
       const SizedBox(height: 8),
       TextFormField(
         controller: controller,
@@ -191,7 +210,8 @@ class AppTextField extends StatelessWidget {
         decoration: InputDecoration(
           hintText: hint,
           counterText: '',
-          contentPadding: const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 14, vertical: 12),
         ),
       ),
     ]);
@@ -204,16 +224,23 @@ class QtyControl extends StatelessWidget {
   final VoidCallback onInc;
   final VoidCallback onDec;
 
-  const QtyControl({super.key, required this.qty, required this.onInc, required this.onDec});
+  const QtyControl(
+      {super.key, required this.qty, required this.onInc, required this.onDec});
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      decoration: BoxDecoration(color: AppColors.bgInput, borderRadius: BorderRadius.circular(10)),
+      decoration: BoxDecoration(
+          color: AppColors.bgInput, borderRadius: BorderRadius.circular(10)),
       padding: const EdgeInsets.all(4),
       child: Row(mainAxisSize: MainAxisSize.min, children: [
         _btn(onDec, '−'),
-        SizedBox(width: 32, child: Text('$qty', textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 15))),
+        SizedBox(
+            width: 32,
+            child: Text('$qty',
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                    fontWeight: FontWeight.w700, fontSize: 15))),
         _btn(onInc, '+'),
       ]),
     );
@@ -225,9 +252,14 @@ class QtyControl extends StatelessWidget {
       child: Container(
         width: 32,
         height: 32,
-        decoration: BoxDecoration(color: AppColors.bgCard, borderRadius: BorderRadius.circular(8)),
+        decoration: BoxDecoration(
+            color: AppColors.bgCard, borderRadius: BorderRadius.circular(8)),
         alignment: Alignment.center,
-        child: Text(label, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w700, color: AppColors.textPrimary)),
+        child: Text(label,
+            style: const TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.w700,
+                color: AppColors.textPrimary)),
       ),
     );
   }
@@ -245,7 +277,8 @@ class SectionHeader extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(bottom: 16),
       child: Row(children: [
-        Text(title, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
+        Text(title,
+            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w800)),
         const Spacer(),
         if (trailing != null) trailing!,
       ]),
@@ -259,7 +292,11 @@ class EmptyState extends StatelessWidget {
   final String title;
   final String subtitle;
 
-  const EmptyState({super.key, required this.emoji, required this.title, required this.subtitle});
+  const EmptyState(
+      {super.key,
+      required this.emoji,
+      required this.title,
+      required this.subtitle});
 
   @override
   Widget build(BuildContext context) {
@@ -269,9 +306,15 @@ class EmptyState extends StatelessWidget {
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Text(emoji, style: const TextStyle(fontSize: 52)),
           const SizedBox(height: 16),
-          Text(title, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600, color: AppColors.textSecondary)),
+          Text(title,
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: AppColors.textSecondary)),
           const SizedBox(height: 6),
-          Text(subtitle, textAlign: TextAlign.center, style: const TextStyle(fontSize: 14, color: AppColors.textMuted)),
+          Text(subtitle,
+              textAlign: TextAlign.center,
+              style: const TextStyle(fontSize: 14, color: AppColors.textMuted)),
         ]),
       ),
     );
