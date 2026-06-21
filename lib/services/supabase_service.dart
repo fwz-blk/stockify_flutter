@@ -25,7 +25,7 @@ class SupabaseService {
         .from('shops')
         .insert({'owner_id': ownerId, 'name': name, 'phone': phone})
         .select()
-        .single();
+        .single();  
     return Shop.fromMap(res);
   }
 
